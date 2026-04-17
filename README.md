@@ -5,16 +5,16 @@ My dendritic (tree-like) nix flake setup
 - Paste your key into this file
     - ```~/.config/sops/age/keys.txt```
 ## adding a secret
-- Add it to secrets.yaml (using sops secrets/secrets.yaml).
-- Declare it in the sops.secrets block in Nix.
+- Add it to secrets.yaml (using ```sops secrets/secrets.yaml```)
+- Declare it in the sops.secrets block
 - Reference it via config.sops.secrets.<name>.path
 ### Template structure in secrets.yaml
-```
-github_email: REPLACEME@email.com
+```yaml
+github_email: "REPLACEME@email.com"
 wifi:
     eduroam:
-        email: REPLACEME@email.com
-        password: supersecretdontstealpls
+        email: "REPLACEME@email.com"
+        password: "supersecretdontstealpls"
 ``` 
 > # TODO:
 > - update setupscript.sh
