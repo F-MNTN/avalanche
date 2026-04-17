@@ -16,3 +16,8 @@ wifi:
         email: REPLACEME@email.com
         password: supersecretdontstealpls
 ``` 
+> # TODO:
+> - update setupscript.sh
+> - correctly set screnshots with grim
+> - enable fingerprint authentification with fprintd (maybe have to switch away from tuigreet to sddm)
+
