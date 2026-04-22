@@ -45,7 +45,7 @@
 
       lsp = {
         enable = true;
-        formatOnSave = true; # re-format according to lsp on save
+        formatOnSave = false; # re-format according to lsp on save
         inlayHints.enable = true;
         harper-ls = {
           enable = false; # enable spellchecking
@@ -83,14 +83,15 @@
         rust.enable = true;
         python.enable = true;
       };
-
-      git.enable = true;
+      
+      git.vim-fugitive.enable = true;
       statusline.lualine.enable = true;
       telescope.enable = true;
       autocomplete.nvim-cmp.enable = true;
       dashboard.alpha = {
         enable = true; # enable nvim dashboard just to have a landing page
         theme = "theta";
+        # layout = {};
       };
     };
   };

@@ -66,7 +66,7 @@
               id = "Tray";
             }
             {
-              id = "Tailscale";
+              id = "KeyboardLayout";
             }
             {
               id = "Battery";
@@ -213,7 +213,7 @@
         randomIntervalSec = 300;
         transitionDuration = 1500;
         transitionType = [
-          "fade"
+          #"fade"
           "disc"
           "stripes"
           "wipe"
@@ -397,8 +397,8 @@
         bluetoothAutoConnect = true;
       };
       sessionMenu = {
-        enableCountdown = true;
-        countdownDuration = 10000;
+        enableCountdown = false;
+        #countdownDuration = 3000;
         position = "center";
         showHeader = true;
         showKeybinds = true;
@@ -417,28 +417,28 @@
           }
           {
             action = "hibernate";
-            enabled = true;
+            enabled = false;
             keybind = "3";
           }
           {
             action = "reboot";
             enabled = true;
-            keybind = "4";
+            keybind = "3";
           }
           {
             action = "logout";
             enabled = true;
-            keybind = "5";
+            keybind = "4";
           }
           {
             action = "shutdown";
             enabled = true;
-            keybind = "6";
+            keybind = "5";
           }
           {
             action = "rebootToUefi";
             enabled = true;
-            keybind = "7";
+            keybind = "6";
           }
         ];
       };
