@@ -47,8 +47,8 @@
         enable = true;
         formatOnSave = false; # re-format according to lsp on save
         inlayHints.enable = true;
-        harper-ls = {
-          enable = false; # enable spellchecking
+        presets.harper.enable = false; # enable spellchecking
+        servers.harper = {
           settings = {
             codeActions = {
               ForceStable = false;

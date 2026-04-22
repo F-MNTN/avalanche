@@ -114,7 +114,7 @@
         enableLockScreenCountdown = true;
         lockScreenCountdownDuration = 10000;
         autoStartAuth = false;
-        allowPasswordWithFprintd = false;
+        allowPasswordWithFprintd = true;
         clockStyle = "custom";
         clockFormat = "hh\nmm";
         passwordChars = false;
