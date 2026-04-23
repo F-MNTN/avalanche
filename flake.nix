@@ -15,6 +15,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-06cb-009a-fingerprint-sensor = {
+      url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11";
+    };
+
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,6 +41,7 @@
       self,
       nixpkgs,
       home-manager,
+      nixos-06cb-009a-fingerprint-sensor,
       nvf,
       sops-nix,
       nix-darwin,
@@ -58,7 +63,9 @@
 
           modules = [
             ./hosts/${hostname}
-
+            
+            # inject fingerprint sensor support
+            nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
             # Inject SOPS
             inputs.sops-nix.nixosModules.sops
             # Inject Home Manager
