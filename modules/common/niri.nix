@@ -1,28 +1,20 @@
 { config, pkgs, ... }:
 {
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${config.programs.niri.package}/bin/niri-session";
-        user = "mntn";
-      };
-    };
-  };
-
-  /**
   # Greeter + tuigreet
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.gdm}/bin/gdm --time --cmd niri-session";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
         user = "greeter";
       };
     };
   };
-**/
+
+  security.pam.services.greetd = {
+    fprintAuth = true;
+  };
 
   systemd.services.greetd.serviceConfig = {
     Type = "idle";
