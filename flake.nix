@@ -16,7 +16,7 @@
     };
 
     nixos-06cb-009a-fingerprint-sensor = {
-      url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11";
+      url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11"; # dont let this follow nixpkgs! I want this specific version!
     };
 
     nvf = {
