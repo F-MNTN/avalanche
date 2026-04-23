@@ -14,7 +14,7 @@
         softtabstop = 2; # Number of spaces that a <Tab> counts for, while editing
         expandtab = true; # Convert tabs to spaces
         #smartindent = true;
-        scrolloff = 5;
+        scrolloff = 5; # scollpadding in lines
       };
 
       binds = {
