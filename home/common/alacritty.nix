@@ -13,8 +13,14 @@
       
       font = {
         normal = {
-          family = "Hack Nerd Font";
+          family = "Hack Nerd Font Mono";
           style = "Regular";
+        };
+        bold = {
+          style = "Bold";
+        };
+        italic = {
+          style = "Italic";
         };
         size = 12;
       };

@@ -1,17 +1,16 @@
 # NixFlakes
 My dendritic (tree-like) nix flake setup
 
- # Niri
- config in `home/hosts/niri.kdl`
+# Niri
+config in `home/hosts/niri.kdl`
 
 refer to the [Niri - Documentation]
- # Noctalia-Shell
- config in `home/common/noctalia.nix`
+# Noctalia-Shell
+config in `home/common/noctalia.nix`
 
 refer to the [Noctalia - Documentation]
 # Features
 ## Feature: NVF - NeoVim Manager
-lauches via `nvim`
 
 config in `home/common/nvf-configuration.nix`
 
@@ -49,10 +48,10 @@ If issues arise refer to [vitor-grunwaldt's Guide] and [uunicorn's python-validi
 > [x] fprintd for auth
 > [x] high quality bluetooth audio
 > [x] push it on a public github (no leaks)
-> [ ] fonts
->   [ ] hack as default mono font
->   [ ] jetbrains as default system font
->   [ ] noto-color as default emoji font
+> [x] fonts
+>   [x] hack as default mono font
+>   [x] jetbrains as default system font
+>   [x] noto-color as default emoji font
 > [ ] screenshots 
 >   [ ] create a screenshot-script using grim
 >   [ ] tie it together in `niri.kdl` with hotkeys

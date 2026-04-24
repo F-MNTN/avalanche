@@ -46,7 +46,6 @@
     btop # monitor
     fastfetch
     ripgrep-all # ripgrep but also searhes pdfs, etc...
-    grim # screenshot tool
     unrar
     unzip
     curl
