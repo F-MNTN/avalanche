@@ -20,6 +20,7 @@
     ./obsidian.nix
     ./browser.nix
     ./email.nix
+    ./screenshot.nix
   ];
 
   # --- SOPS Configuration ---

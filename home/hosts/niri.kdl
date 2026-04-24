@@ -134,8 +134,8 @@ binds {
 
   Mod+F { maximize-window-to-edges; }
 
-  // Screenshot setup
-  //Print hotkey-overlay-title="Screenshot by selection" { spawn "grim -c -g "$(slurp)};
+  // Screenshot by selection setup
+  Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty --filename -"; }
 }
 
 // Indicate screencasted windows with red border
