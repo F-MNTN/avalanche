@@ -52,9 +52,9 @@ If issues arise refer to [vitor-grunwaldt's Guide] and [uunicorn's python-validi
 >   [x] hack as default mono font
 >   [x] jetbrains as default system font
 >   [x] noto-color as default emoji font
-> [ ] screenshots 
->   [ ] create a screenshot-script using grim
->   [ ] tie it together in `niri.kdl` with hotkeys
+> [x] screenshots 
+>   [x] create a screenshot-script using grim
+>   [x] tie it together in `niri.kdl` with hotkeys
 > [ ] adjust setupscript.sh to actually work with
 >   [ ] selecting or creating a new host
 >   [ ] updating hardware.nix for a selected host on demand
