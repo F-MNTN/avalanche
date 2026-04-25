@@ -99,6 +99,7 @@ binds {
 
   Mod+Return hotkey-overlay-title="Start terminal" { spawn "alacritty"; }
   Mod+B hotkey-overlay-title="Start browser" { spawn "firefox"; }
+  Mod+X hotkey-overlay-title="Explode Windows" { toggle-overview; }
 
   // Workspaces
   Mod+1 { focus-workspace 1; }
