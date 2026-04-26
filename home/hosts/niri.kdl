@@ -84,18 +84,17 @@ hotkey-overlay {
 binds {
 // Core Noctalia binds
   Mod+Space hotkey-overlay-title="Toggle app-launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
-  //Mod hotkey-overlay-title="Toggle start" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
   Mod+S hotkey-overlay-title="Toggle settings" { spawn-sh "noctalia-shell ipc call settings toggle"; }
   Mod+Ctrl+L hotkey-overlay-title="Lock screen" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
   Mod+W hotkey-overlay-title="Close focued window" { close-window; }
 
-
 // Audio & Brightness
-  XF86AudioRaiseVolume { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-  XF86AudioLowerVolume { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-  XF86AudioMute { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-  XF86MonBrightnessUp { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-  XF86MonBrightnessDown { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+  XF86AudioMute allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+  XF86AudioMicMute allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
+  XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
   Mod+Return hotkey-overlay-title="Start terminal" { spawn "alacritty"; }
   Mod+B hotkey-overlay-title="Start browser" { spawn "firefox"; }
