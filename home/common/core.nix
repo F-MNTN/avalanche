@@ -58,9 +58,19 @@
     localsend
     pavucontrol # audio i/o control
     easyeffects # audio tools and effects (may replace pavucontrol)
+
+    # Nvim plugins
+    lazygit
   ];
 
   # one-line Programs -------------------------
+  
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = { # set default apps 
+      "application/pdf" = "sioyek.desktop";
+    };
+  };
 
   # Wayland environment variables (good to have globally for GUI hosts)
   home.sessionVariables = {
