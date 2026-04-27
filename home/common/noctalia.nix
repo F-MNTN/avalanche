@@ -7,9 +7,7 @@
         calendarSupport = true;
       }
     );
-    plugins = [
-      "Tailscale"
-    ];
+    
     settings = {
       settingsVersion = 0;
       bar = {
@@ -64,6 +62,14 @@
           right = [
             {
               id = "Tray";
+            }
+            {
+              id = "plugin:tailscale";
+              refreshInterval = 5000;
+              showIpAddress = true;
+              showPeerCount = true;
+              compactMode = false;
+              terminalCommand = "alacritty -e";
             }
             {
               id = "KeyboardLayout";
@@ -561,56 +567,5 @@
         monitorWidgets = [ ];
       };
     };
-    /*
-      balls bro
-      settings = {
-        bar = {
-          density = "compact";
-          position = "right";
-          showCapsule = false;
-          widgets = {
-            left = [
-              {
-                id = "ControlCenter";
-                useDistroLogo = true;
-              }
-              {
-                id = "Workspace";
-                hideUnoccupied = false;
-                labelMode = "none";
-              }
-            ];
-            center = [
-              {
-                id = "Clock";
-                formatHorizontal = "HH:mm";
-                formatVertical = "HH mm";
-                useMonospacedFont = true;
-                usePrimaryColor = true;
-              }
-            ];
-            right = [
-              {
-                id = "Tray";
-              }
-              {
-                id = "Battery";
-                alwaysShowPercentage = false;
-                warningThreshold = 27;
-              }
-            ];
-          };
-        };
-        colorSchemes.predefinedScheme = "Monochrome";
-        general = {
-          avatarImage = "/home/mntn/.face";
-          radiusRatio = 0.2;
-        };
-        location = {
-          monthBeforeDay = true;
-          name = "Vienna, Austria";
-        };
-      };
-    */
   };
 }
