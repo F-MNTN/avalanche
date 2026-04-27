@@ -68,7 +68,7 @@
               refreshInterval = 5000;
               showIpAddress = true;
               showPeerCount = true;
-              compactMode = false;
+              compactMode = true;
               terminalCommand = "alacritty -e";
             }
             {
