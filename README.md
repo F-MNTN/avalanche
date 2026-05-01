@@ -73,8 +73,8 @@ If issues arise refer to [vitor-grunwaldt's Guide] and [uunicorn's python-validi
 >       - [ ] text
 >       - [ ] screenshots
 >   - [ ] emoji picker
-> - [-] screen recording
->   - [-] do research how that would work
+> - [x] screen recording
+>   - [x] do research how that would work
 >   - [x] test with obs/discord
 > - [ ] create modules/options to import/enable for specifics
 >   - [ ] gaming
