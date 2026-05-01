@@ -6,7 +6,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      update-chronos = "sudo nixos-rebuild switch --flake .#chronos";
+      updateMe = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
     };
 
     history = {
