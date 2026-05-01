@@ -65,8 +65,9 @@
             }
             {
               id = "plugin:tailscale";
+              enabled = true;
               refreshInterval = 5000;
-              showIpAddress = true;
+              showIpAddress = false;
               showPeerCount = true;
               compactMode = true;
               terminalCommand = "alacritty -e";

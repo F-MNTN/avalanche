@@ -45,13 +45,15 @@
     nautilus # file manager
     tealdeer # tldr
     btop # monitor
-    fastfetch
+    fastfetch # mandatory, i dont make the rules
     ripgrep-all # ripgrep but also searhes pdfs, etc...
-    unrar
-    unzip
-    curl
+    unrar # get yo stuff
+    unzip # get mo stuff
+    curl # get that stuff over there
     tree
     xwayland-satellite # x11 wayland translator
+    fd # fast find
+    fzf
 
     # Standalone --------------------------------
     sioyek # pdf reader

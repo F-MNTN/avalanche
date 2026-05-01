@@ -7,7 +7,7 @@
         early-exit = true; # exit after copy/save
         copy-command = "wl-copy --type image/png";
         corner-roundness = 12;
-        initial-tool = "brush";
+        initial-tool = "arrow";
         output-filename = "/tmp/screenshot-%Y-%m-%d_%H:%M:%S.png";
       };
       color-palette = {

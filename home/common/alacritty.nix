@@ -1,4 +1,23 @@
 { config, pkgs, ... }: {
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      update-chronos = "sudo nixos-rebuild switch --flake .#chronos";
+    };
+
+    history = {
+      size = 10000;
+      path = "$HOME/.zsh_history";
+    };
+    setOptions = [
+      "HIST_IGNORE_ALL_DUPS"
+    ];
+  };
+
   programs.alacritty = {
     enable = true;
     
@@ -24,8 +43,6 @@
         };
         size = 12;
       };
-      
-      # Add the rest of your custom keybinds, colors, etc. here
     };
   };
 }
