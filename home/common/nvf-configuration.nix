@@ -39,8 +39,8 @@
       };
 
       lazy = {
-        enable = true; # enable lazy loading of plugins
-        plugins = {
+        enable = true; 
+        plugins = { # plugins to lazily load when they are needed
           "lazygit.nvim" = {
             package = pkgs.vimPlugins.lazygit-nvim;
             cmd = [ "LazyGit" ];
@@ -63,10 +63,30 @@
               vim.g.vimtex_view_method = "sioyek"
             '';
           };
+          "flutter-tools.nvim" = {
+            package = pkgs.vimPlugins.flutter-tools-nvim;
+            ft = [ "dart" ];
+            after = ''
+              require("flutter-tools").setup({
+                flutter_path = "${pkgs.flutter}/bin/flutter",
+                lsp = {
+                  on_attach = function(_, bufnr)
+                    local opts = { buffer = bufnr, silent = true }
+                    vim.keymap.set("n", "<leader>fr", "<cmd>FlutterRun<CR>",       opts)
+                    vim.keymap.set("n", "<leader>fq", "<cmd>FlutterQuit<CR>",      opts)
+                    vim.keymap.set("n", "<leader>fR", "<cmd>FlutterRestart<CR>",   opts)
+                    vim.keymap.set("n", "<leader>fd", "<cmd>FlutterDevices<CR>",   opts)
+                    vim.keymap.set("n", "<leader>fe", "<cmd>FlutterEmulators<CR>", opts)
+                  end,
+                },
+              })
+            '';
+          };
         };
       };
-      extraPlugins = {
-        harpoon2 = {
+
+      extraPlugins = { # plugins to load on startup
+        harpoon2 = { # classic the vimagen W 
           package = pkgs.vimPlugins.harpoon2;
           setup = ''
             local harpoon = require("harpoon")
@@ -79,12 +99,107 @@
             vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end,                    { desc = "Harpoon: file 4" })
           '';
         };
-        render-markdown = {
+        render-markdown = { # render Markdown in file 
           package = pkgs.vimPlugins.render-markdown-nvim;
           setup = ''
             require("render-markdown").setup({
               enabled = true,
               file_types = { "markdown", "obsidian" },
+            })
+          '';
+        };
+        plenary = {
+          package = pkgs.vimPlugins.plenary-nvim;
+        };
+        project = {
+          package = pkgs.vimPlugins.project-nvim;
+          setup = ''
+            vim.schedule(function()
+              require("project").setup({})
+              require("telescope").load_extension("projects")
+            end)
+          '';
+        };
+        alpha = {
+          package = pkgs.vimPlugins.alpha-nvim;
+          setup = ''
+            local alpha  = require("alpha")
+            local theta  = require("alpha.themes.theta")
+            local dash   = require("alpha.themes.dashboard")
+        
+            -- steal theta's header
+            local header = theta.header
+        
+            -- ── Recent files ─────────────────────────────────────────────────
+            local recent_files = {
+              type = "group",
+              val = function()
+                local items = {{ type = "text", val = "  Recent Files", opts = { hl = "AlphaHeader", position = "center" }}}
+                local count = 0
+                for _, f in ipairs(vim.v.oldfiles) do
+                  if count >= 3 then break end
+                  if vim.fn.filereadable(f) == 1 then
+                    count = count + 1
+                    table.insert(items, dash.button(
+                      tostring(count),
+                      "  " .. vim.fn.fnamemodify(f, ":~:."),
+                      "<cmd>e " .. vim.fn.fnameescape(f) .. "<CR>"
+                    ))
+                  end
+                end
+                return items
+              end,
+            }
+        
+            -- ── Recent projects ───────────────────────────────────────────────
+            local recent_projects = {
+              type = "group",
+              val = function()
+                local items = {{ type = "text", val = "  Recent Projects", opts = { hl = "AlphaHeader", position = "center" }}}
+                local ok, project = pcall(require, "project_nvim")
+                if ok then
+                  local projects = project.get_recent_projects()
+                  for i = 1, math.min(3, #projects) do
+                    local p = projects[#projects - i + 1]
+                    table.insert(items, dash.button(
+                      "p" .. i,
+                      "  " .. vim.fn.fnamemodify(p, ":t"),
+                      "<cmd>cd " .. p .. " | e .<CR>"
+                    ))
+                  end
+                end
+                return items
+              end,
+            }
+        
+            -- ── Shortcuts ─────────────────────────────────────────────────────
+            local shortcuts = {
+              type = "group",
+              val = {
+                { type = "text", val = "  Shortcuts", opts = { hl = "AlphaHeader", position = "center" }},
+                dash.button("g", "  LazyGit",      "<cmd>LazyGit<CR>"),
+                dash.button("f", "  Find file",    "<cmd>Telescope find_files<CR>"),
+                dash.button("l", "  Live grep",    "<cmd>Telescope live_grep<CR>"),
+                dash.button("n", "  New file",     "<cmd>ene | startinsert<CR>"),
+                dash.button("c", "  Config",       "<cmd>e ~/NixFlakes/avalanche/home/common/nvf-configuration.nix<CR>"),
+                dash.button("q", "  Quit",         "<cmd>qa<CR>"),
+              },
+            }
+        
+            local function pad(n) return { type = "padding", val = n } end
+            alpha.setup({
+              layout = {
+                pad(2),
+                header,
+                pad(2),
+                recent_files,
+                pad(1),
+                recent_projects,
+                pad(1),
+                shortcuts,
+                pad(1),
+              },
+              opts = { margin = 5 },
             })
           '';
         };
@@ -108,17 +223,18 @@
         clang.enable = true;
         nix.enable = true;
         rust.enable = true;
-        python.enable = true;
+        python = {
+          enable = true;
+          lsp.servers = ["pyright"];
+        };
         markdown.enable = true;
+        java.enable = true;
       };
 
       statusline.lualine.enable = true;
       telescope.enable = true;
       autocomplete.nvim-cmp.enable = true;
-      dashboard.alpha = {
-        enable = true; # enable nvim dashboard just to have a landing page
-        theme = "theta";
-      };
+      dashboard.alpha.enable = false;
     };
   };
 }
