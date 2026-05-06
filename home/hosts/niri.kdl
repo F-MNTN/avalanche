@@ -96,9 +96,11 @@ binds {
   XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
   XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
-  Mod+Return hotkey-overlay-title="Start terminal" { spawn "alacritty"; }
+  Mod+Return hotkey-overlay-title="Start terminal" { spawn "ghostty"; }
+  // Mod+Return hotkey-overlay-title="Start terminal" { spawn "alacritty"; }
   Mod+B hotkey-overlay-title="Start browser" { spawn "firefox"; }
   Mod+X hotkey-overlay-title="Explode Windows" { toggle-overview; }
+  Mod+Ctrl+H hotkey-overlay-title="Show Keybind-helper" { show-hotkey-overlay; }
 
   // Workspaces
   Mod+1 { focus-workspace 1; }
@@ -113,13 +115,13 @@ binds {
   Mod+Shift+5 { move-column-to-workspace 5; }
   
   // Focus navigation  
-  Mod+H { focus-column-left; }  
+  Mod+H  hotkey-overlay-title="Focus window left" { focus-column-left; }  
   Mod+K hotkey-overlay-title="Focus workspace above" { focus-workspace-up; }
   Mod+J hotkey-overlay-title="Focus workspace below" { focus-workspace-down; } 
-  Mod+L { focus-column-right; }  
+  Mod+L hotkey-overlay-title="Focus window right" { focus-column-right; }  
   // alternative arrowkeys
-  Mod+Up hotkey-overlay-title="Focus workspace above" { focus-workspace-up; }
-  Mod+Down hotkey-overlay-title="Focus workspace below" { focus-workspace-down; } 
+  Mod+Up { focus-workspace-up; }
+  Mod+Down { focus-workspace-down; } 
 
   // Move windows/columns  
   Mod+Shift+H { move-column-left; }
@@ -134,7 +136,7 @@ binds {
 
   Mod+F { maximize-window-to-edges; }
 
-  // Screenshot by selection setup
+  // Screenshot by selection
   Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty --filename -"; }
 }
 
@@ -166,14 +168,14 @@ layout {
     gaps 5
 
     focus-ring {
-	width 0.5
+	      width 0.5
         active-color   "#c8bfff"
         inactive-color "#141316"
         urgent-color   "#ffb4ab"
     }
 
     border {
-	width 1
+	      width 1
         active-color   "#c8bfff"
         inactive-color "#141316"
         urgent-color   "#ffb4ab"

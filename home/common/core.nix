@@ -14,13 +14,14 @@
   imports = [
     inputs.sops-nix.homeManagerModules.sops
     ./noctalia.nix
-    ./alacritty.nix
+    ./tty.nix
     ./git.nix
     ./nvf-configuration.nix
     ./obsidian.nix
     ./browser.nix
     ./email.nix
     ./screenshot.nix
+    ./anki.nix
   ];
 
   # --- SOPS Configuration ---
