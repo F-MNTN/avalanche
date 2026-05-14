@@ -82,6 +82,32 @@
               })
             '';
           };
+
+          "obsidian.nvim" = {
+            package = pkgs.vimPlugins.obsidian-nvim;
+            ft = [ "markdown" ];
+
+            after = ''
+              require("obsidian").setup({
+                legacy_commands = false,
+                workspaces = {
+                  {
+                    name = "Mountain",
+                    path = "~/Desktop/ObsidianVaults/ObisidianSnyc_TheMountain",
+                  },
+                },
+                completion = {
+                  nvim_cmp = true,
+                },
+                ui = {
+                  enable = true, 
+                },
+              })
+            '';
+          };
+          "vim-be-good" = {
+            package = pkgs.vimPlugins.vim-be-good;
+          };
         };
       };
 
@@ -104,7 +130,7 @@
           setup = ''
             require("render-markdown").setup({
               enabled = true,
-              file_types = { "markdown", "obsidian" },
+              file_types = { "markdown" },
             })
           '';
         };
@@ -142,29 +168,8 @@
                     count = count + 1
                     table.insert(items, dash.button(
                       tostring(count),
-                      "  " .. vim.fn.fnamemodify(f, ":~:."),
+                      "   " .. vim.fn.fnamemodify(f, ":t"), -- only show filename not whole path
                       "<cmd>e " .. vim.fn.fnameescape(f) .. "<CR>"
-                    ))
-                  end
-                end
-                return items
-              end,
-            }
-        
-            -- ── Recent projects ───────────────────────────────────────────────
-            local recent_projects = {
-              type = "group",
-              val = function()
-                local items = {{ type = "text", val = "  Recent Projects", opts = { hl = "AlphaHeader", position = "center" }}}
-                local ok, project = pcall(require, "project_nvim")
-                if ok then
-                  local projects = project.get_recent_projects()
-                  for i = 1, math.min(3, #projects) do
-                    local p = projects[#projects - i + 1]
-                    table.insert(items, dash.button(
-                      "p" .. i,
-                      "  " .. vim.fn.fnamemodify(p, ":t"),
-                      "<cmd>cd " .. p .. " | e .<CR>"
                     ))
                   end
                 end
@@ -176,13 +181,14 @@
             local shortcuts = {
               type = "group",
               val = {
-                { type = "text", val = "  Shortcuts", opts = { hl = "AlphaHeader", position = "center" }},
-                dash.button("g", "  LazyGit",      "<cmd>LazyGit<CR>"),
-                dash.button("f", "  Find file",    "<cmd>Telescope find_files<CR>"),
-                dash.button("l", "  Live grep",    "<cmd>Telescope live_grep<CR>"),
-                dash.button("n", "  New file",     "<cmd>ene | startinsert<CR>"),
-                dash.button("c", "  Config",       "<cmd>e ~/NixFlakes/avalanche/home/common/nvf-configuration.nix<CR>"),
-                dash.button("q", "  Quit",         "<cmd>qa<CR>"),
+                { type = "text", val = "   Shortcuts", opts = { hl = "AlphaHeader", position = "center" }},
+                dash.button("g", "   LazyGit",      "<cmd>LazyGit<CR>"),
+                dash.button("p", "   Find project", "<cmd>ProjectTelescope<CR>"),
+                dash.button("f", "   Find file",    "<cmd>Telescope find_files<CR>"),
+                dash.button("z", "   Fuzzy grep",    "<cmd>Telescope live_grep<CR>"),
+                dash.button("n", "   New file",     "<cmd>ene | startinsert<CR>"),
+                dash.button("c", "   Config",       "<cmd>e ~/NixFlakes/avalanche/home/common/nvf-configuration.nix<CR>"),
+                dash.button("q", "   Quit",         "<cmd>qa<CR>"),
               },
             }
         
@@ -193,8 +199,6 @@
                 header,
                 pad(2),
                 recent_files,
-                pad(1),
-                recent_projects,
                 pad(1),
                 shortcuts,
                 pad(1),
