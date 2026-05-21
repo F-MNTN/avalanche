@@ -61,6 +61,13 @@
             ];
             before = ''
               vim.g.vimtex_view_method = "sioyek"
+              vim.g.vimtex_delim_toggle_mod_list = {
+                { "\\left", "\\right" },
+                { "\\bigl", "\\bigr" },
+                { "\\Bigl", "\\Bigr" },
+                { "\\biggl", "\\biggr" },
+                { "\\Biggl", "\\Biggr" },
+              }
             '';
           };
           "flutter-tools.nvim" = {
@@ -73,6 +80,7 @@
                   on_attach = function(_, bufnr)
                     local opts = { buffer = bufnr, silent = true }
                     vim.keymap.set("n", "<leader>fr", "<cmd>FlutterRun<CR>",       opts)
+                    vim.keymap.set("n", "<leader>fl", "<cmd>FlutterReload<CR>",       opts)
                     vim.keymap.set("n", "<leader>fq", "<cmd>FlutterQuit<CR>",      opts)
                     vim.keymap.set("n", "<leader>fR", "<cmd>FlutterRestart<CR>",   opts)
                     vim.keymap.set("n", "<leader>fd", "<cmd>FlutterDevices<CR>",   opts)
