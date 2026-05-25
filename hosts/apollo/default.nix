@@ -5,12 +5,7 @@
     
     # Shared system baseline
     ../../modules/common
-    ../../modules/common/tailscale.nix
     
-    # Desktop specific (Niri, Audio, Fonts)
-    ../../modules/desktop/niri.nix
-    ../../modules/desktop/bluetooth.nix
-    ../../modules/desktop/pulseaudio.nix
     inputs.noctalia.nixosModules.default
   ];
 
