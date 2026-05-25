@@ -22,14 +22,7 @@
       };
 
       keymaps = [
-        /*
-          { example keymap
-            key = "<leader>m";
-            mode = "[n,i]";
-            silent = true;
-            action = ":make<CR>";
-          }
-        */
+          
       ];
 
       theme = {
@@ -58,6 +51,7 @@
               "tex"
               "latex"
               "bib"
+              "markdown"
             ];
             before = ''
               vim.g.vimtex_view_method = "sioyek"
@@ -79,12 +73,12 @@
                 lsp = {
                   on_attach = function(_, bufnr)
                     local opts = { buffer = bufnr, silent = true }
-                    vim.keymap.set("n", "<leader>fr", "<cmd>FlutterRun<CR>",       opts)
-                    vim.keymap.set("n", "<leader>fl", "<cmd>FlutterReload<CR>",       opts)
-                    vim.keymap.set("n", "<leader>fq", "<cmd>FlutterQuit<CR>",      opts)
-                    vim.keymap.set("n", "<leader>fR", "<cmd>FlutterRestart<CR>",   opts)
-                    vim.keymap.set("n", "<leader>fd", "<cmd>FlutterDevices<CR>",   opts)
-                    vim.keymap.set("n", "<leader>fe", "<cmd>FlutterEmulators<CR>", opts)
+                    vim.keymap.set("n", "<leader>Fr", "<cmd>FlutterRun<CR>",       opts)
+                    vim.keymap.set("n", "<leader>Fl", "<cmd>FlutterReload<CR>",       opts)
+                    vim.keymap.set("n", "<leader>Fq", "<cmd>FlutterQuit<CR>",      opts)
+                    vim.keymap.set("n", "<leader>FR", "<cmd>FlutterRestart<CR>",   opts)
+                    vim.keymap.set("n", "<leader>Fd", "<cmd>FlutterDevices<CR>",   opts)
+                    vim.keymap.set("n", "<leader>Fe", "<cmd>FlutterEmulators<CR>", opts)
                   end,
                 },
               })
@@ -235,6 +229,8 @@
         clang.enable = true;
         nix.enable = true;
         rust.enable = true;
+        ts.enable = true;
+        svelte.enable = true;
         python = {
           enable = true;
           lsp.servers = ["pyright"];

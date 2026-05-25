@@ -16,6 +16,11 @@
     setOptions = [
       "HIST_IGNORE_ALL_DUPS"
     ];
+    initContent = ''
+      if [[ -n "$NIX_SHELL_INDICATOR" ]]; then
+        PROMPT="%F{cyan}[develop:$NIX_SHELL_INDICATOR]%f $PROMPT"
+      fi
+    '';
   };
 
   programs.ghostty = {
