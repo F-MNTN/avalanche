@@ -1,6 +1,11 @@
+keys:
+  - &admin age17334nje7u24kq49t24pkvy0pl58rhtszw9n8k9hemmsdaqhfgpdq02qpdm
+  - &chronos age1f856z3t3gzdmdg7zh679m3whmu4q7473t0yksmsnsy8exka7uu6qv0vy36
+  - &aether age100ywp69jnpqmy2e6n0frdnhw5czrjp8t48f2fss6qlq55204epxsuhpkn2
 creation_rules:
   - path_regex: secrets/.*$
     key_groups:
       - age: 
-        - age1f856z3t3gzdmdg7zh679m3whmu4q7473t0yksmsnsy8exka7uu6qv0vy36
-        - age100ywp69jnpqmy2e6n0frdnhw5czrjp8t48f2fss6qlq55204epxsuhpkn2
+        - *admin
+        - *chronos
+        - *aether
