@@ -1,10 +1,7 @@
-{ config, pkgs, inputs, ... }:
-
-{
+{ config, pkgs, inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/common
-    # ../../modules/desktop # Uncomment if it's a desktop
     inputs.noctalia.nixosModules.default
   ];
 
