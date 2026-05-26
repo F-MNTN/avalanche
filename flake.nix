@@ -97,7 +97,6 @@
       nixosConfigurations = {
         chronos = mkHost { hostname = "chronos"; };
         aether = mkHost { hostname = "aether"; };
-        hephaestus = mkHost { hostname = "hephaestus"; };
       };
 
       # Future macOS host (commented out until you get a Mac)
