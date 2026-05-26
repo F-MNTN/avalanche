@@ -1,20 +1,15 @@
 # NixFlakes
 My dendritic (tree-like) nix flake setup
-
 # Niri
 config in `home/hosts/niri.kdl`
-
-refer to the [Niri - Documentation]
+refer to the [Niri - Documentation](https://niri-wm.github.io/niri/Configuration%3A-Introduction.html)
 # Noctalia-Shell
 config in `home/common/noctalia.nix`
-
-refer to the [Noctalia - Documentation]
+refer to the [Noctalia - Documentation](https://docs.noctalia.dev/getting-started/keybinds/)
 # Features
 ## Feature: NVF - NeoVim Manager
-
 config in `home/common/nvf-configuration.nix`
-
-refer to the [NVF - Documentation]
+refer to the [NVF - Documentation](https://nvf.notashelf.dev/configuring.html)
 ## Feature: SOPS
 ### starting on a new host
 - Paste your key into this file
@@ -24,8 +19,9 @@ refer to the [NVF - Documentation]
 - Declare it in the sops.secrets block
 - Reference it via config.sops.secrets.<name>.path
 #### Template structure in secrets.yaml
-```yaml
-github_email: "REPLACEME@email.com"
+```
+github:
+    email: "REPLACEME@email.com"
 wifi:
     eduroam:
         email: "REPLACEME@email.com"
@@ -34,8 +30,7 @@ wifi:
 ## Feature: Fprintd authentification
 replace fingerprint file with your own if you want to use fingerprints to authenticate.
 - put it in `modules/MyDevice/calib-data.bin` and make sure to import the `fprintauth.nix` in `modules/MyDevice/default.nix`.
-If issues arise refer to [vitor-grunwaldt's Guide] and [uunicorn's python-validity driver] as they were the basis of this setup.
-
+If issues arise refer to [vitor-grunwaldt's Guide](https://github.com/viktor-grunwaldt/t480-fingerprint-nixos/blob/main/SETUP.md) and [uunicorn's python-validity driver](https://github.com/uunicorn/python-validity) as they were the basis of this setup.
 > # TODO:
 > - [x] niri as a wm
 >   - [x] tuigreet + greetd
@@ -56,15 +51,16 @@ If issues arise refer to [vitor-grunwaldt's Guide] and [uunicorn's python-validi
 >   - [x] create a screenshot-script using grim
 >   - [x] tie it together in `niri.kdl` with hotkeys
 > - [ ] adjust setupscript.sh to actually work with
->   - [ ] selecting or creating a new host
->   - [ ] updating hardware.nix for a selected host on demand
+>   - [x] selecting or creating a new host
+>   - [x] updating hardware.nix for a selected host on demand
 >   - [ ] creating their own user
 > - [ ] adjust nvim
+>   - [ ] make whichkey show defaults
 >   - [x] keymaps
 >       - [x] git as `<leader>gg`
 >       - [x] harpoon as `<leader>1-4` without overlaps
->   - [ ] dashboard-alpha
->       - [ ] make buttons work/put useful buttons on dashboard
+>   - [x] dashboard-alpha
+>       - [x] make buttons work/put useful buttons on dashboard
 >   - [ ] markdown/obsidian ready
 >       - [x] integrate markdown renderer for `.md`
 >       - [ ] include latex parsing
@@ -82,9 +78,9 @@ If issues arise refer to [vitor-grunwaldt's Guide] and [uunicorn's python-validi
 >   - [ ] media editing/creation
 >   - [ ] implement these as toggle-able options in `setupscript.sh` to opt-in
 > - [ ] screenshot/screen recording dmenu command integration `MOD + Space -> "record window" "record screen" "screenshot window" "screenshot"`
-
-[NVF - Documentation]: https://nvf.notashelf.dev/configuring.html
-[Niri - Documentation]: https://niri-wm.github.io/niri/Configuration%3A-Introduce tion.html
-[Noctalia - Documentation]: https://docs.noctalia.dev/getting-started/keybinds/
-[vitor-grunwaldt's Guide]: https://github.com/viktor-grunwaldt/t480-fingerprint-nixos/blob/main/SETUP.md
-[uunicorn's python-validity driver]: https://github.com/uunicorn/python-validity
+> - [ ] Hosts
+>   - [x] Chronos
+>   - [x] Aether
+>   - [ ] Apollo
+>   - [ ] Haephestus
+>

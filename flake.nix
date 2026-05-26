@@ -95,9 +95,7 @@
 
       # hosts
       nixosConfigurations = {
-        apollo = mkHost { hostname = "apollo"; };
         chronos = mkHost { hostname = "chronos"; };
-        pheobe = mkHost { hostname = "pheobe"; };
         aether = mkHost { hostname = "aether"; };
         hephaestus = mkHost { hostname = "hephaestus"; };
       };

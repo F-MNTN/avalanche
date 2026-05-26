@@ -30,7 +30,9 @@
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
     secrets = {
-      "github_email" = { };
+      "github" = { 
+        key = "email";
+      };
 
       "eduroam_email" = {
         key = "wifi/eduroam/email";

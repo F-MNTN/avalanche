@@ -64,7 +64,7 @@ ${t480_line}    inputs.noctalia.nixosModules.default
   #   defaultSopsFormat = "yaml";
   #   age.keyFile      = "/home/mntn/.config/sops/age/keys.txt";
   #   secrets = {
-  #     "github_email"          = { };
+  #     "github/email"          = { };
   #     "wifi/eduroam/email"    = { };
   #     "wifi/eduroam/password" = { };
   #   };

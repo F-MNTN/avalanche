@@ -7,7 +7,7 @@
     enable = true;
     settings = {
       user.name = "F-MNTN";
-      user.email = config.sops.secrets."github_email".path;
+      user.email = config.sops.secrets."github/email".path;
     };
   };
 }

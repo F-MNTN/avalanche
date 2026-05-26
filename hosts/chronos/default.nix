@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
-{
+{ config, pkgs, inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
 
@@ -14,7 +8,7 @@
     inputs.noctalia.nixosModules.default
   ];
 
-  # --- Apollo-Specific Settings ---
+  # --- Host-Specific Settings ---
   networking.hostName = "chronos";
 
   boot.loader.systemd-boot.enable = true;
