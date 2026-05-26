@@ -8,6 +8,7 @@
     ./niri.nix
     ./localsend.nix
     ./eduroam.nix
+    ./sops-system.nix
   ];
 
   # Nix settings
