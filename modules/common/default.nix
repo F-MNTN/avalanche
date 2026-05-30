@@ -9,6 +9,7 @@
     ./localsend.nix
     ./eduroam.nix
     ./sops-system.nix
+    ./vpn.nix
   ];
 
   # Nix settings

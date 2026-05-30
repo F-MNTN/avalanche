@@ -34,6 +34,8 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    #inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master"; # idk if this should be injected here or somewhere specific to chronos
   };
 
   outputs =
@@ -45,6 +47,7 @@
       nvf,
       sops-nix,
       nix-darwin,
+      #nixos-hardware,
       ...
     }@inputs:
 
@@ -81,6 +84,7 @@
                 inputs.sops-nix.homeManagerModules.default
               ];
             }
+            # nixos-hardware.nixosModules.lenovo-thinkpad-t480
           ]
           ++ extraModules;
         };
