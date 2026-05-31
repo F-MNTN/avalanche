@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 {
-
+  # Disable gdm and gnome to fix a bug when fresh installing
+  services.displayManager.gdm.enable = false;
+  services.desktopManager.gnome.enable = false;
   # Greeter + tuigreet
   services.greetd = {
     enable = true;

@@ -229,7 +229,7 @@
         clang.enable = true;
         nix.enable = true;
         rust.enable = true;
-        ts.enable = true;
+        typescript.enable = true;
         svelte.enable = true;
         python = {
           enable = true;

@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
-{
+{ config, pkgs, inputs, ... }: {
   home.username = "mntn";
   home.homeDirectory = "/home/mntn";
   home.stateVersion = "25.11";
@@ -13,6 +7,7 @@
 
   imports = [
     inputs.sops-nix.homeManagerModules.sops
+    ./sops-user.nix
     ./noctalia.nix
     ./tty.nix
     ./git.nix
@@ -23,25 +18,6 @@
     ./screenshot.nix
     ./anki.nix
   ];
-
-  # --- SOPS Configuration ---
-  sops = {
-    defaultSopsFile = ../../secrets/secrets.yaml;
-    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
-
-    secrets = {
-      "github" = { 
-        key = "email";
-      };
-
-      "eduroam_email" = {
-        key = "wifi/eduroam/email";
-      };
-      "eduroam_password" = {
-        key = "wifi/eduroam/password";
-      };
-    };
-  };
 
   home.packages = with pkgs; [
     # Terminal / TUI ----------------------------

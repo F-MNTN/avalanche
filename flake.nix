@@ -86,17 +86,11 @@
         };
     in
     {
-
-      packages."x86_64-linux".default =
-        (nvf.lib.neovimConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          modules = [ ./home/common/nvf-configuration.nix ];
-        }).neovim;
-
       # hosts
       nixosConfigurations = {
         chronos = mkHost { hostname = "chronos"; };
         aether = mkHost { hostname = "aether"; };
+        haephestus = mkHost { hostname = "haephestus"; };
       };
 
       # Future macOS host (commented out until you get a Mac)
