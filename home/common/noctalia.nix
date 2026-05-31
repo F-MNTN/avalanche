@@ -73,6 +73,11 @@
               terminalCommand = "alacritty -e";
             }
             {
+              id = "plugin:mullvad";
+              enabled = true;
+              terminalCommand = "alacritty -e";
+            }
+            {
               id = "KeyboardLayout";
             }
             {
