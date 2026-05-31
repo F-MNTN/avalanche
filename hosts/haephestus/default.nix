@@ -8,10 +8,9 @@
 
   networking.hostName = "haephestus";
 
-
+  boot.loader.grub.enable = false;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.enable = false;
   services.printing.enable = true;
 
   # --- Home Manager Bridge ---
