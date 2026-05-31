@@ -13,14 +13,5 @@
   boot.loader.efi.canTouchEfiVariables = true;
   services.printing.enable = true;
 
-  # --- Home Manager Bridge ---
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    backupFileExtension = "bak";
-    users.mntn = import ../../home/hosts/haephestus.nix;
-  };
-
   system.stateVersion = "25.11";
 }

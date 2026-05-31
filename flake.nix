@@ -86,13 +86,6 @@
         };
     in
     {
-
-      packages."x86_64-linux".default =
-        (nvf.lib.neovimConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          modules = [ ./home/common/nvf-configuration.nix ];
-        }).neovim;
-
       # hosts
       nixosConfigurations = {
         chronos = mkHost { hostname = "chronos"; };
