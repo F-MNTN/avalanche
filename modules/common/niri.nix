@@ -41,12 +41,4 @@
   };
   services.libinput.enable = true;
   services.libinput.touchpad.clickMethod = "clickfinger";
-
-  # Fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.hack
-    nerd-fonts.jetbrains-mono
-    noto-fonts
-    noto-fonts-color-emoji
-  ];
 }

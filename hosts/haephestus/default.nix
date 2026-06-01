@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../../modules/common
     ../../modules/audio
+    ../../modules/gaming
     inputs.noctalia.nixosModules.default
   ];
 
@@ -14,6 +15,29 @@
   boot.loader.efi.canTouchEfiVariables = true;
   services.printing.enable = true;
 
+  # mouse options
+  services.xserver.dpi = 180;
+  services.xserver.upscaleDefaultCursor = true;
+
+  # disable fprintd
+  security.pam.services.greetd.fprintAuth = false;
+
+  # nvidia drivers
+  services.xserver.videoDrivers = [ "nvidia" ];
+  boot.extraModprobeConfig = "options nvidia-drm modeset=1";
+
+  hardware = {
+    graphics.enable = true;
+    nvidia = {
+      open = true;
+      nvidiaSettings = true;
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+  };
+
   # custom options
   avalanche.bluetooth = {
     enable = true;
@@ -22,8 +46,6 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-
-  # Realtek BT firmware
   hardware.firmware = [ pkgs.linux-firmware ];
 
   system.stateVersion = "25.11";

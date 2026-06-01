@@ -14,6 +14,6 @@
     usbutils
   ];
 
-  home.file.".config/easyeffects/input/Basic Voice Isolation.json".source = ./haephestus-mic-preset.json;
+  home.file.".config/easyeffects/input/Basic Voice Isolation.json".source = ./rode-mic-preset.json;
   home.file.".config/niri/config.kdl".source = ./niri.kdl;
 }
