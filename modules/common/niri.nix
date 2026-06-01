@@ -14,9 +14,6 @@
     };
   };
 
-  security.pam.services.greetd = {
-    fprintAuth = true;
-  };
 
   systemd.services.greetd.serviceConfig = {
     Type = "idle";

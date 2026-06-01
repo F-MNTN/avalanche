@@ -14,6 +14,13 @@
     usbutils
   ];
 
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+    gtk.enable = true;
+  };
+
   home.file.".config/easyeffects/input/Basic Voice Isolation.json".source = ./rode-mic-preset.json;
   home.file.".config/niri/config.kdl".source = ./niri.kdl;
 }

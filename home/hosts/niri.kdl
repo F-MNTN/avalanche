@@ -70,7 +70,7 @@ input {
 
 cursor {
   // xcursor-theme "breeze_cursors"
-  xcursor-size 24
+  //xcursor-size 24
   
   // hide-when-typing // this has some issues with FPS-games
   hide-after-inactive-ms 3000

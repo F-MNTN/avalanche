@@ -22,19 +22,37 @@
   # disable fprintd
   security.pam.services.greetd.fprintAuth = false;
 
-  # nvidia drivers
+  # nvidia
   services.xserver.videoDrivers = [ "nvidia" ];
-  boot.extraModprobeConfig = "options nvidia-drm modeset=1";
-
+  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
   hardware = {
     graphics.enable = true;
     nvidia = {
-      open = true;
+      open = false;
       nvidiaSettings = true;
       modesetting.enable = true;
       powerManagement.enable = false;
       powerManagement.finegrained = false;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+    };
+  };
+  nixpkgs.config.nvidia.acceptLicense = true;
+  environment.sessionVariables = {
+    #GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    LIBVA_DRIVER_NAME = "nvidia";
+    NVD_BACKEND = "direct";
+  };
+
+  # bluetooth
+  systemd.services.bt-usb-reset = {
+    description = "Power cycle Realtek BT dongle on boot";
+    before = [ "bluetooth.service" ];
+    wantedBy = [ "bluetooth.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/sh -c 'echo 0 > /sys/bus/usb/devices/1-7/authorized && sleep 2 && echo 1 > /sys/bus/usb/devices/1-7/authorized'";
+      RemainAfterExit = true;
     };
   };
 

@@ -17,6 +17,9 @@
   boot.loader.grub.enable = false;
   services.printing.enable = true;
 
+  #enable fprintd
+  security.pam.services.greetd.fprintAuth = true;
+
   # custom options
   avalanche.bluetooth = {
     enable = true;
