@@ -8,18 +8,4 @@
     options iwlwifi d0i3_disable=1
     options iwlmvm power_scheme=1
   '';
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        ControllerMode = "bredr";
-        Experimental = true;
-        FastConnectable = true;
-      };
-      Policy = { AutoEnable = true; };
-    };
-  };
-  services.blueman.enable = true;
 }

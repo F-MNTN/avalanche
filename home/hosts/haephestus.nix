@@ -4,8 +4,16 @@
 
   # haephestus-specific packages
   home.packages = with pkgs; [
-
+    beeper
+    qbittorrent-enhanced
+    obs-studio
+    gimp-with-plugins
+    webcord # discord wrapper with theming and tracker blocking
+    ente-auth # 2FA
+    mullvad-vpn
+    usbutils
   ];
 
+  home.file.".config/easyeffects/input/Basic Voice Isolation.json".source = ./haephestus-mic-preset.json;
   home.file.".config/niri/config.kdl".source = ./niri.kdl;
 }
