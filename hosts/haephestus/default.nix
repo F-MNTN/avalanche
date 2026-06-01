@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/common
+    ../../modules/audio
     inputs.noctalia.nixosModules.default
   ];
 
@@ -13,5 +14,48 @@
   boot.loader.efi.canTouchEfiVariables = true;
   services.printing.enable = true;
 
+  # custom options
+  avalanche.bluetooth = {
+    enable = true;
+    intelCoexFix = false; # uses Realtek adapter
+  };
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  # Realtek BT firmware
+  hardware.firmware = [ pkgs.linux-firmware ];
+
   system.stateVersion = "25.11";
+
+  # Windows drives
+  environment.systemPackages = [ pkgs.ntfs3g ];
+  
+  fileSystems."/mnt/HDD-Bulk" = {
+    device = "/dev/disk/by-uuid/3454A76254A72618";
+    fsType = "ntfs3";
+    options = [
+      "uid=1000"
+      "gid=100"
+      "dmask=022"
+      "fmask=133"
+      "nofail"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=60"
+    ];
+  };
+  
+  fileSystems."/mnt/SSD-storage" = {
+    device = "/dev/disk/by-uuid/58A6C9B1A6C98FC4";
+    fsType = "ntfs3";
+    options = [
+      "uid=1000"
+      "gid=100"
+      "dmask=022"
+      "fmask=133"
+      "nofail"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=60"
+    ];
+  };
 }
