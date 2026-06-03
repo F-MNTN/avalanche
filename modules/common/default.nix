@@ -4,13 +4,12 @@
 
   imports = [
     ./users.nix
-    ./tailscale.nix
     ./niri.nix
     ./localsend.nix
     ./eduroam.nix
     ./sops-system.nix
     ./fonts.nix
-#    ./vpn.nix
+    ./vpn.nix
   ];
 
   # Nix settings
@@ -38,14 +37,5 @@
   networking.networkmanager.enable = true; # enable networking (WLAN)
   services.power-profiles-daemon.enable = true; # power profiles
   services.upower.enable = true; # battery recognition
-
-  services.resolved = { #mullvad needs this to work; configures fallback dns
-    enable = true;
-    settings.Resolve = {
-      Dnssec = "true";
-      Domains = [ "~." ];
-      FallbackDNS = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-      DNSoverTLS = "true";
-    };
-  };
+  services.gvfs.enable = true; # enable file trash can
 }
