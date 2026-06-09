@@ -7,6 +7,19 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M.png"
 // autostart 
 spawn-at-startup "noctalia-shell"
 
+// video outputs
+output "Acer Technologies Acer XF240H 0x7300C45D" {
+    // Force the 120Hz mode found in your query
+    mode "1920x1080@119.982"
+    position x=0 y=0
+}
+
+output "PNP(BNQ) BenQ RL2455 E4F04842SL0" {
+    mode "1920x1080@60.000"
+    // Positioned exactly to the right of the Acer (1920 pixels over)
+    position x=1920 y=0
+}
+
 // Input settings
 input {
   keyboard {

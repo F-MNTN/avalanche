@@ -10,6 +10,7 @@
     ./sops-system.nix
     ./fonts.nix
     ./vpn.nix
+    ./mouse.nix
   ];
 
   # Nix settings
