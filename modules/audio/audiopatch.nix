@@ -16,6 +16,8 @@
           "bluez5.roles" = [ "a2dp_sink" "a2dp_source" "headset_head_unit" "headset_audio_gateway" ];
           # Disable LDAC — its decoder fails to init, prefer AAC instead
           "bluez5.codecs" = [ "aac" "sbc_xq" "sbc" ];
+          "bluez5.auto-connect" = [ "a2dp_sink" ];
+          "bluez5.reconnect-profiles" = [ "a2dp_sink" ];
         };
       };
     };

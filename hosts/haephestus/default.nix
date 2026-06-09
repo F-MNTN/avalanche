@@ -56,15 +56,15 @@
     };
   };
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  hardware.firmware = [ pkgs.linux-firmware ];
+
   # custom options
   avalanche.bluetooth = {
     enable = true;
     intelCoexFix = false; # uses Realtek adapter
   };
-
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  hardware.firmware = [ pkgs.linux-firmware ];
 
   system.stateVersion = "25.11";
 
@@ -82,6 +82,7 @@
       "nofail"
       "x-systemd.automount"
       "x-systemd.idle-timeout=60"
+      "force"
     ];
   };
   
@@ -96,6 +97,7 @@
       "nofail"
       "x-systemd.automount"
       "x-systemd.idle-timeout=60"
+      "force"
     ];
   };
 }
