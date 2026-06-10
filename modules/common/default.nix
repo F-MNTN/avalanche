@@ -11,6 +11,7 @@
     ./fonts.nix
     ./vpn.nix
     ./mouse.nix
+    ./fancontrol.nix
   ];
 
   # Nix settings
