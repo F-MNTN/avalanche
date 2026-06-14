@@ -9,6 +9,7 @@
   ];
 
   networking.hostName = "haephestus";
+  nixpkgs.config.allowUnfree = true;
 
   boot.loader.grub.enable = false;
   boot.loader.systemd-boot.enable = true;
@@ -45,28 +46,13 @@
   };
 
   # bluetooth
-  systemd.services.bt-usb-reset = {
-    description = "Power cycle Realtek BT dongle on boot";
-    before = [ "bluetooth.service" ];
-    wantedBy = [ "bluetooth.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/sh -c 'echo 0 > /sys/bus/usb/devices/1-7/authorized && sleep 2 && echo 1 > /sys/bus/usb/devices/1-7/authorized'";
-      RemainAfterExit = true;
-    };
-  };
-
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
   hardware.firmware = [ pkgs.linux-firmware ];
-
-  # custom options
   avalanche.bluetooth = {
     enable = true;
     intelCoexFix = false; # uses Realtek adapter
   };
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "25.11"; # dont touch unless extremely sure
 
   # Windows drives
   environment.systemPackages = [ pkgs.ntfs3g ];
